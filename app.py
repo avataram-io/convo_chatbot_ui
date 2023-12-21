@@ -18,6 +18,10 @@ def register():
 def forget_pass():
     return render_template('forgot-password.html')
 
+# @app.route('/change_pass')
+# def change_pass():
+#     return render_template('change-password.html')
+
 @app.route('/table')
 def table():
     return render_template('tables.html')
