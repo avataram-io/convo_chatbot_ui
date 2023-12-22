@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Convo-Admin</title>
+    <title>Convo-Questions</title>
 
     <!-- Custom fonts for this template -->
     <link href="static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -22,6 +22,7 @@
 
     <!-- Custom styles for this page -->
     <link href="static/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 </head>
 
@@ -76,65 +77,19 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
-            </li> -->
-
-            <!-- Divider -->
-            <!-- <hr class="sidebar-divider"> -->
-
-            <!-- Heading -->
-            <!-- <div class="sidebar-heading">
-                Addons
-            </div> -->
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Login</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                    
-                        <a class="collapse-item" href="/">Login</a>
-                        <a class="collapse-item" href="/register">Register</a>
-                        <a class="collapse-item" href="/forget_pass">Forgot Password</a>
-                        
-                    </div>
-                </div>
-            </li> -->
-
-            <!-- Nav Item - Charts -->
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li> -->
-
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="/table">
+                <a class="nav-link" href="/tableintent">
                     <!-- <i class="fas fa-fw fa-table"></i> -->
                     <i class="fa fa-database" aria-hidden="true"></i>
-                    
                     <span>Intents</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/tablequestion">
+                    <!-- <i class="fas fa-fw fa-table"></i> -->
+                    <i class="fa fa-database" aria-hidden="true"></i>
+                    <span>Questions</span></a>
             </li>
 
             <!-- Divider -->
@@ -348,11 +303,33 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Tables</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fa fa-plus-square fa-sm text-white-50"></i> Add Intent</a>
+                        <h1 class="h3 mb-0 text-gray-800">Questions</h1>
+                        <a href="#" id="addIntentBtn" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                            <i class="fa fa-plus-square fa-sm text-white-50"></i> Add Questions
+                        </a>
                     </div>
-
+                    
+                    <div id="intentCardPage" class="col-xl-10 col-md-6 mb-4" style="display: none;">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <form id="intentForm">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Add Questions
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="intentName">Question Name:</label>
+                                                <input type="text" class="form-control" id="intentName" name="intentName" required autocomplete="off">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                            <button type="submit" class="btn btn-secondary">Cancel</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Page Heading -->
                     <!-- <h1 class="h3 mb-2 text-gray-800">Tables</h1> -->
                     <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
@@ -369,112 +346,77 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Intent Name</th>
                                             <th>Questions</th>
-                                            <th>Edit</th>
-                                            <th>Add video </th>
-                                            <th>Delete</th>
-                                            
-                                            <!-- <th>Salary</th> -->
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Intent Name</th>
                                             <th>Questions</th>
-                                            <th>Edit</th>
-                                            <th>Add video </th>
-                                            <th>Delete</th>
-                                            
-                                            <!-- <th>Salary</th> -->
+                                            <th>Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        
                                         <tr>
                                             <td>greet</td>
                                             <td>
-                                                <ul>
-                                                  <li>hi</li>
-                                                  <li>hey</li>
-                                                  <li>Good Morning </li>
-                                                  <li>Good Evening </li>
-                                                </ul>
-                                              </td>
-                                            <td><a href="#" class="btn btn-info btn-circle">
-                                                <i class="fa fa-wrench" aria-hidden="true"></i></a>
+                                                <a href="#" class="btn btn-info btn-circle">
+                                                    <i class="fa fa-wrench" aria-hidden="true"></i>
+                                                </a>
+                                                <!-- <a href="#" class="btn btn-success btn-circle">
+                                                    <i class="fa fa-upload" aria-hidden="true"></i>
+                                                </a> -->
+                                                <a href="#" class="btn btn-danger btn-circle">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
                                             </td>
-                                            <td><a href="#" class="btn btn-success btn-circle">
-                                                <i class="fa fa-upload" aria-hidden="true">
-                                            </a></td>
-                                            <td><a href="#" class="btn btn-danger btn-circle">
-                                                <i class="fas fa-trash"></i>
-                                            </a></td>
-                                           
                                         </tr>
                                         <tr>
                                             <td>appointment_booking</td>
                                             <td>
-                                                <ul>
-                                                  <li>How can I schedule an appointment</li>
-                                                  <li>book an appointment </li>
-                                                  <li>need an appointment </li>
-                                                </ul>
-                                              </td>
-                                            <td><a href="#" class="btn btn-info btn-circle">
-                                                <i class="fa fa-wrench" aria-hidden="true"></i></a>
+                                                <a href="#" class="btn btn-info btn-circle">
+                                                    <i class="fa fa-wrench" aria-hidden="true"></i>
+                                                </a>
+                                                <!-- <a href="#" class="btn btn-success btn-circle">
+                                                    <i class="fa fa-upload" aria-hidden="true"></i>
+                                                </a> -->
+                                                <a href="#" class="btn btn-danger btn-circle">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
                                             </td>
-                                            <td><a href="#" class="btn btn-success btn-circle">
-                                                <i class="fa fa-upload" aria-hidden="true">
-                                            </a></td>
-                                            <td><a href="#" class="btn btn-danger btn-circle">
-                                                <i class="fas fa-trash"></i>
-                                            </a></td>
-                                           
                                         </tr>
                                         <tr>
                                             <td>doctor_information</td>
                                             <td>
-                                                <ul>
-                                                  <li>tell me more about dr. abc</li>
-                                                  <li>contact doctor </li>
-                                                  <li>detail doctor </li>
-                                                </ul>
-                                              </td>
-                                            <td><a href="#" class="btn btn-info btn-circle">
-                                                <i class="fa fa-wrench" aria-hidden="true"></i></a>
+                                                <a href="#" class="btn btn-info btn-circle">
+                                                    <i class="fa fa-wrench" aria-hidden="true"></i>
+                                                </a>
+                                                <!-- <a href="#" class="btn btn-success btn-circle">
+                                                    <i class="fa fa-upload" aria-hidden="true"></i>
+                                                </a> -->
+                                                <a href="#" class="btn btn-danger btn-circle">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
                                             </td>
-                                            <td><a href="#" class="btn btn-success btn-circle">
-                                                <i class="fa fa-upload" aria-hidden="true">
-                                            </a></td>
-                                            <td><a href="#" class="btn btn-danger btn-circle">
-                                                <i class="fas fa-trash"></i>
-                                            </a></td>
-                                           
                                         </tr>
                                         <tr>
                                             <td>department_information</td>
                                             <td>
-                                                <ul>
-                                                  <li>which departments are available in the hospital</li>
-                                                  <li>department info </li>
-                                                  <li>department</li>
-                                                </ul>
-                                              </td>
-                                            <td><a href="#" class="btn btn-info btn-circle">
-                                                <i class="fa fa-wrench" aria-hidden="true"></i></a>
+                                                <a href="#" class="btn btn-info btn-circle">
+                                                    <i class="fa fa-wrench" aria-hidden="true"></i>
+                                                </a>
+                                                <!-- <a href="#" class="btn btn-success btn-circle">
+                                                    <i class="fa fa-upload" aria-hidden="true"></i>
+                                                </a> -->
+                                                <a href="#" class="btn btn-danger btn-circle">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
                                             </td>
-                                            <td><a href="#" class="btn btn-success btn-circle">
-                                                <i class="fa fa-upload" aria-hidden="true">
-                                            </a></td>
-                                            <td><a href="#" class="btn btn-danger btn-circle">
-                                                <i class="fas fa-trash"></i>
-                                            </a></td>
-                                           
+
                                         </tr>
-                                                                               
                                     </tbody>
                                 </table>
+                                
                             </div>
                         </div>
                     </div>
@@ -489,7 +431,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright NeonFlake &copy; 2023</span>
                     </div>
                 </div>
             </footer>
@@ -542,6 +484,33 @@
 
     <!-- Page level custom scripts -->
     <script src="static/js/demo/datatables-demo.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Add click event to the "Add Intent" button
+            $("#addIntentBtn").click(function() {
+                // Show or hide the card page based on its current state
+                $("#intentCardPage").toggle();
+                $("#dataTable").toggle();
+            });
+    
+            // Add submit event to the form
+            $("#intentForm").submit(function(event) {
+                // Prevent the default form submission
+                event.preventDefault();
+    
+                // Retrieve the intent name from the input
+                var intentName = $("#intentName").val();
+    
+                // Log the intent name to the console
+                console.log("Intent Name: " + intentName);
+    
+                // Optionally, hide the card page after saving
+                $("#intentCardPage").hide();
+                $("#dataTable").show();
+            });
+        });
+    </script>
+    
 
 </body>
 
