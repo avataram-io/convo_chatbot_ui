@@ -61,7 +61,7 @@
             </div> -->
 
              <!-- Nav Item - Pages Collapse Menu -->
-             <li class="nav-item">
+             <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fa fa-plus" aria-hidden="true"></i>
@@ -69,13 +69,13 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <!-- <h6 class="collapse-header">Custom Components:</h6> -->
+                        <h6 class="collapse-header">Custom Components:</h6>
                         <a class="collapse-item" href="#">Add Vidoes</a>
                         <a class="collapse-item" href="#">Add Intent</a>
                         <a class="collapse-item" href="#">Add Questions</a>
                     </div>
                 </div>
-            </li>
+            </li> -->
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
@@ -275,11 +275,11 @@
                                 <!-- Dropdown - User Information -->
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                     aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="#">
+                                    <!-- <a class="dropdown-item" href="#">
                                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Profile
-                                    </a>
-                                    <a class="dropdown-item" href="/forget_pass">
+                                    </a> -->
+                                    <a class="dropdown-item" href="/login">
                                         <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Change Password
                                     </a>
@@ -319,11 +319,69 @@
                                                 Add Questions
                                             </div>
                                             <div class="form-group">
-                                                <label for="intentName">Question Name:</label>
-                                                <input type="text" class="form-control" id="intentName" name="intentName" required autocomplete="off">
+                                                <label for="intentName">Select Intent Name:</label>
+                                                <!-- <input type="text" class="form-control" id="intentName" name="intentName" required autocomplete="off"> -->
+                                                <select class="form-control" id="intentName" name="intentName" required>
+                                                    <option value="greet">Greet</option>
+                                                    <option value="appointment_booking">Appointment Booking</option>
+                                                    <option value="doctor_information">Doctor Information</option>
+                                                    <option value="department_information">Department Information</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="intentName">Upload Video:</label>
+                                                <input type="file" class="form-control" id="videofile" name="file" required autocomplete="off">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="intentDescription">Questions Description:</label>
+                                                <textarea class="form-control" id="intentDescription" name="intentDescription" rows="4" required></textarea>
+                                                <small class="form-text text-muted">Enter each question on a new line.</small>
                                             </div>
                                             <button type="submit" class="btn btn-primary">Save</button>
-                                            <button type="submit" class="btn btn-secondary">Cancel</button>
+                                            <button type="reset" class="cancelBtn btn btn-secondary">Cancel</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="updateintentCardPage" class="col-xl-10 col-md-6 mb-4" style="display: none;">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <form id="intentForm1">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Update Questions
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="intentName">Intent Name:</label>
+                                                <!-- <input type="text" class="form-control" id="intentName" name="intentName" required autocomplete="off"> -->
+                                                <select class="form-control" id="intentName" name="intentName" required>
+                                                    <option value="greet">Greet</option>
+                                                    <!-- <option value="appointment_booking">Appointment Booking</option> -->
+                                                    <!-- <option value="doctor_information">Doctor Information</option> -->
+                                                    <!-- <option value="department_information">Department Information</option> -->
+                                                    
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="intentName">Update Video:</label>
+                                                <input type="file" class="form-control" id="videofile" name="file" required autocomplete="off">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="intentDescription">Update Questions Description:</label>
+                                                <textarea class="form-control" id="intentDescription" name="intentDescription" rows="4" required style="text-align: left;">
+                                                    hi
+                                                    hey
+                                                    Good Morning
+                                                    Good Evening
+                                                </textarea>
+                                                <small class="form-text text-muted">Enter each question on a new line.</small>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Update</button>
+                                            <button type="reset" class="cancelBtn btn btn-secondary">Cancel</button>
                                         </form>
                                     </div>
                                 </div>
@@ -341,82 +399,152 @@
                         <!-- <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                         </div> -->
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Questions</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Questions</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>greet</td>
-                                            <td>
-                                                <a href="#" class="btn btn-info btn-circle">
-                                                    <i class="fa fa-wrench" aria-hidden="true"></i>
-                                                </a>
-                                                <!-- <a href="#" class="btn btn-success btn-circle">
-                                                    <i class="fa fa-upload" aria-hidden="true"></i>
-                                                </a> -->
-                                                <a href="#" class="btn btn-danger btn-circle">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>appointment_booking</td>
-                                            <td>
-                                                <a href="#" class="btn btn-info btn-circle">
-                                                    <i class="fa fa-wrench" aria-hidden="true"></i>
-                                                </a>
-                                                <!-- <a href="#" class="btn btn-success btn-circle">
-                                                    <i class="fa fa-upload" aria-hidden="true"></i>
-                                                </a> -->
-                                                <a href="#" class="btn btn-danger btn-circle">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>doctor_information</td>
-                                            <td>
-                                                <a href="#" class="btn btn-info btn-circle">
-                                                    <i class="fa fa-wrench" aria-hidden="true"></i>
-                                                </a>
-                                                <!-- <a href="#" class="btn btn-success btn-circle">
-                                                    <i class="fa fa-upload" aria-hidden="true"></i>
-                                                </a> -->
-                                                <a href="#" class="btn btn-danger btn-circle">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>department_information</td>
-                                            <td>
-                                                <a href="#" class="btn btn-info btn-circle">
-                                                    <i class="fa fa-wrench" aria-hidden="true"></i>
-                                                </a>
-                                                <!-- <a href="#" class="btn btn-success btn-circle">
-                                                    <i class="fa fa-upload" aria-hidden="true"></i>
-                                                </a> -->
-                                                <a href="#" class="btn btn-danger btn-circle">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
-                                            </td>
+                        <div id="dataTable1">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Intent Name</th>
+                                                <th>Questions</th>
+                                                <th>Videos</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Intent Name</th>
+                                                <th>Questions</th>
+                                                <th>Videos</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            <tr>
+                                                <td>greet</td>
+                                                <td>
+                                                    <ul>
+                                                    <li>hi</li>
+                                                    <li>hey</li>
+                                                    <li>Good Morning </li>
+                                                    <li>Good Evening </li>
+                                                    </ul>
+                                                </td>
+                                                <td>
+                                                    <video width="150" height="150" controls>
+                                                        <source src="https://res.cloudinary.com/drettcko3/video/upload/v1702035751/lidubqvsoohh8utwcv24.mp4" type="video/mp4">
+                                                        Your browser does not support the video tag.
+                                                    </video>
+                                                </td>
 
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                
+                                                <td>
+                                                    <a href="#" class="update-btn btn btn-info btn-circle">
+                                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                                    </a>
+                                                    <!-- <a href="#" class="btn btn-success btn-circle">
+                                                        <i class="fa fa-upload" aria-hidden="true"></i>
+                                                    </a> -->
+                                                    <a href="#" class="btn btn-danger btn-circle">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>appointment_booking</td>
+                                                <td>
+                                                    <ul>
+                                                    <li>How can I schedule an appointment</li>
+                                                    <li>book an appointment </li>
+                                                    <li>need an appointment </li>
+                                                    </ul>
+                                                </td>
+                                                <td>
+                                                    <video width="150" height="150" controls>
+                                                        <source src="https://res.cloudinary.com/drettcko3/video/upload/v1701842698/ojrilkntl6mhinsmmudq.mp4" type="video/mp4">
+                                                        Your browser does not support the video tag.
+                                                    </video>
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="update-btn btn btn-info btn-circle">
+                                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                                    </a>
+                                                    <!-- <a href="#" class="btn btn-success btn-circle">
+                                                        <i class="fa fa-upload" aria-hidden="true"></i>
+                                                    </a> -->
+                                                    <a href="#" class="btn btn-danger btn-circle">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>doctor_information</td>
+                                                <td>
+                                                    <ul>
+                                                    <li>tell me more about dr. abc</li>
+                                                    <li>contact doctor </li>
+                                                    <li>detail doctor </li>
+                                                    </ul>
+                                                </td>
+                                                <td>
+                                                    <video width="150" height="150" controls>
+                                                        <source src="https://res.cloudinary.com/drettcko3/video/upload/v1702036146/pttwn38y4ndlimknuzb0.mp4" type="video/mp4">
+                                                        Your browser does not support the video tag.
+                                                    </video>
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="update-btn btn btn-info btn-circle">
+                                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                                    </a>
+                                                    <!-- <a href="#" class="btn btn-success btn-circle">
+                                                        <i class="fa fa-upload" aria-hidden="true"></i>
+                                                    </a> -->
+                                                    <a href="#" class="btn btn-danger btn-circle">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>department_information</td>
+                                                <td>
+                                                    <ul>
+                                                    <li>which departments are available in the hospital</li>
+                                                    <li>department info </li>
+                                                    <li>department</li>
+                                                    </ul>
+                                                </td>
+                                                <td>
+                                                    <video width="150" height="150" controls>
+                                                        <source src="https://res.cloudinary.com/drettcko3/video/upload/v1701861500/zrmaashi5hwrnrkqqhdl.mp4" type="video/mp4">
+                                                        Your browser does not support the video tag.
+                                                    </video>
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="update-btn btn btn-info btn-circle">
+                                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                                    </a>
+                                                    <!-- <a href="#" class="btn btn-success btn-circle">
+                                                        <i class="fa fa-upload" aria-hidden="true"></i>
+                                                    </a> -->
+                                                    <a href="#" class="btn btn-danger btn-circle">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <script>
+                                        $(document).ready(function () {
+                                            // Initialize DataTable
+                                            $('#dataTable').DataTable({
+                                                order: [[0, 'asc']], // Sort by the first column
+                                                columnDefs: [
+                                                    { orderable: false, targets: [1,2,3] } // Disable sorting for the second column (Action)
+                                                ]
+                                            });
+                                        });
+                                    </script>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -467,6 +595,7 @@
             </div>
         </div>
     </div>
+    
 
     <!-- Bootstrap core JavaScript-->
     <script src="static/vendor/jquery/jquery.min.js"></script>
@@ -488,11 +617,13 @@
         $(document).ready(function() {
             // Add click event to the "Add Intent" button
             $("#addIntentBtn").click(function() {
-                // Show or hide the card page based on its current state
+                // Toggle visibility of the card page and the table
+                // $(this).hide();
                 $("#intentCardPage").toggle();
-                $("#dataTable").toggle();
+                $("#dataTable1").toggle();
+                $("#updateintentCardPage").hide();
             });
-    
+
             // Add submit event to the form
             $("#intentForm").submit(function(event) {
                 // Prevent the default form submission
@@ -504,10 +635,51 @@
                 // Log the intent name to the console
                 console.log("Intent Name: " + intentName);
     
-                // Optionally, hide the card page after saving
+                // Optionally, hide the card page and show the table after saving
                 $("#intentCardPage").hide();
-                $("#dataTable").show();
+                $("#dataTable1").show();
+                $("#updateintentCardPage").hide();
+
             });
+
+            $(".update-btn").click(function() {
+                // Toggle visibility of the card page and the table
+                // $(this).hide();
+                $("#updateintentCardPage").toggle();
+                $("#dataTable1").toggle();
+                $("#intentCardPage").hide();
+            });
+
+            // Add submit event to the form
+            $("#intentForm1").submit(function(event) {
+                // Prevent the default form submission
+                event.preventDefault();
+    
+                // Retrieve the intent name from the input
+                var intentName = $("#intentName").val();
+    
+                // Log the intent name to the console
+                console.log("Intent Name: " + intentName);
+    
+                // Optionally, hide the card page and show the table after saving
+                $("#intentCardPage").hide();
+                $("#dataTable1").show();
+                $("#updateintentCardPage").hide();
+
+            });
+            // Add click event to the "Cancel" button
+            $(".cancelBtn").click(function() {
+                    // Hide the card page
+                    $("#intentCardPage").hide();
+
+                    // Show the "Add Intent" button
+                    $("#addIntentBtn").show();
+
+                    // Go back to the previous page
+                    // window.history.back();
+                    $("#dataTable1").show();
+                });
+
         });
     </script>
     
